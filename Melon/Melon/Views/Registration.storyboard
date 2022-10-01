@@ -11,15 +11,15 @@
         <!--Log InCV-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="LogInCV" customModule="Melon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                <viewController storyboardIdentifier="LogInCV" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LogInCV" customModule="Melon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="uyR-sg-Kpb">
                                 <rect key="frame" x="73" y="305" width="268" height="124"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcN-ps-Fov">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcN-ps-Fov">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="50"/>
                                         <color key="backgroundColor" red="0.97647058959999999" green="0.97254908080000002" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -34,7 +34,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-CB-46n">
                                         <rect key="frame" x="0.0" y="74" width="268" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="   Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXN-zQ-45d">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXN-zQ-45d">
                                                 <rect key="frame" x="0.0" y="0.0" width="268" height="50"/>
                                                 <color key="backgroundColor" red="0.97647058959999999" green="0.97254908080000002" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
@@ -80,7 +80,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="goToApp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KuK-M2-uZr"/>
-                                            <segue destination="JvC-h9-Nmz" kind="show" id="TP5-UC-TgB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJZ-Pz-g8j">
@@ -123,17 +122,18 @@
                         <outlet property="errorEmailLbl" destination="WtP-DT-QPO" id="tM0-re-1dw"/>
                         <outlet property="logInTF" destination="rNj-7u-AsE" id="oCW-Cp-dzN"/>
                         <outlet property="passwordTF" destination="zXN-zQ-45d" id="6Fy-9R-pxs"/>
+                        <segue destination="dNv-eY-8TX" kind="presentation" identifier="goToMain" modalPresentationStyle="fullScreen" id="Ro1-Fg-sxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="83.705357142857139"/>
+            <point key="canvasLocation" x="967" y="84"/>
         </scene>
         <!--Sign UpCV-->
         <scene sceneID="EV1-Zr-WiD">
             <objects>
                 <viewController id="Ysa-6u-7qE" customClass="SignUpCV" customModule="Melon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ege-as-WPY">
+                    <view key="view" contentMode="scaleToFill" id="Ege-as-WPY" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -158,7 +158,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goToApp" destination="Ysa-6u-7qE" eventType="touchUpInside" id="Tq8-eX-j4T"/>
-                                    <segue destination="JvC-h9-Nmz" kind="show" id="d37-Io-0wq"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Image-3" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-Xs-zmb">
@@ -269,14 +268,12 @@
             <point key="canvasLocation" x="1789.8550724637682" y="83.705357142857139"/>
         </scene>
         <!--Main-->
-        <scene sceneID="oDB-WK-i8Y">
+        <scene sceneID="hVt-56-fZj">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="JvC-h9-Nmz" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="xXT-a9-imQ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H1b-z6-LVC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Main" id="dNv-eY-8TX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aoU-YO-Gls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2403" y="13"/>
+            <point key="canvasLocation" x="2514" y="70"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9tK-DO-4Zf">
@@ -297,9 +294,6 @@
             <point key="canvasLocation" x="122" y="84"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="TP5-UC-TgB"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Image-3" width="150" height="134"/>
         <systemColor name="systemBackgroundColor">
