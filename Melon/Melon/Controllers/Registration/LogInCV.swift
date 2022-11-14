@@ -24,6 +24,12 @@ class LogInCV: UIViewController {
         logInTF.isEnabled = false
         designViews()
         showPassword(textField: passwordTF)
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let _ = user else {
+                return
+            }
+            self?.presentHome()
+        }
     }
     
     private var isValidEmail = false { didSet { btnIsEnabled() }}
@@ -53,13 +59,13 @@ class LogInCV: UIViewController {
     }
   
     @IBAction func goToApp(_ sender: UIButton) {
-        Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) {_, error in
+        Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) { [weak self] _, error in
             if error == nil {
-                self.presentHome()
+                self?.presentHome()
             } else {
-                Design.showError(errorLbl: self.errorEmailLbl)
-                self.passwordTF.text = ""
-                self.emailTF.text = ""
+                Design.showError(errorLbl: (self?.errorEmailLbl)!)
+                self?.passwordTF.text = ""
+                self?.emailTF.text = ""
             }
         }
     }
@@ -75,6 +81,7 @@ class LogInCV: UIViewController {
         logInTF.layer.cornerRadius = 25
     }
     
+    //дорабоать
     private func isEnabledViewBtn() {
         if logInTF.isEnabled {
             logInTF.layer.cornerRadius = 25
@@ -87,11 +94,7 @@ class LogInCV: UIViewController {
     }
     
     private func presentHome() {
-//        performSegue(withIdentifier: "goToMainFromLogIn", sender: nil)
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let newViewController = storyBoard.instantiateViewController(withIdentifier: "testVC") as! testVC
-      //  self.present(newViewController, animated: true, completion: nil)
-        performSegue(withIdentifier: "goToMain", sender: nil)
+        self.performSegue(withIdentifier: "goToMain", sender: nil)
     }
     
     private func delegateTextField () {
@@ -133,7 +136,7 @@ class LogInCV: UIViewController {
 }
 
 extension LogInCV: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder() // dismiss keyboard
         return true
     }

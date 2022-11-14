@@ -18,7 +18,7 @@ class Design {
         }
     }
     
-    static func addTire (textField: UITextField) {
+    static func addTire(textField: UITextField) {
            if textField.text?.count == 3 || textField.text?.count == 6 {
                textField.text = textField.text! + "-"
            }

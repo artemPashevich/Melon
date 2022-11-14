@@ -23,9 +23,11 @@ class SignUpCV: UIViewController {
     private var isValidPhone = false {didSet {btnIsEnabled()}}
     var iconClick = false
     let imageIcon = UIImageView()
+    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference(withPath: "Users")
         delegateTextField()
         designViews()
         showPassword(textField: passwordTF)
@@ -65,26 +67,24 @@ class SignUpCV: UIViewController {
     
     
     @IBAction func goToApp() {
-        Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!) { result, error in
+        Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!) { [weak self] user, error in
             if error == nil {
-                if let result = result {
-                    let ref = Database.database().reference().child("Users")
-                    ref.child(result.user.uid).updateChildValues(["Phone": self.phoneTF.text!, "Email": self.emailTF.text!])
-                    self.presentHome()
+                if let user = user {
+                    let userRef = self?.ref.child(user.user.uid)
+                    userRef?.setValue(["email": user.user.email, "phone": self?.phoneTF.text])
+                    self?.presentHome()
                 } else {
-                    Design.showError(errorLbl: self.errorPassword)
-                    self.passwordTF.text = ""
-                    self.emailTF.text = ""
-                    self.phoneTF.text = ""
+                    Design.showError(errorLbl: (self?.errorPassword)!)
+                    self?.passwordTF.text = ""
+                    self?.emailTF.text = ""
+                    self?.phoneTF.text = ""
                 }
             }
         }
     }
     
     private func presentHome() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "testVC") as! testVC
-        self.present(newViewController, animated: true, completion: nil)
+       performSegue(withIdentifier: "GoToMain", sender: nil)
     }
     
     private func btnIsEnabled() {
