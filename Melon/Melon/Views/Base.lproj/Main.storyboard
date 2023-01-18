@@ -395,40 +395,18 @@
             </objects>
             <point key="canvasLocation" x="1719.8473282442746" y="-365.49295774647891"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Screen-->
         <scene sceneID="GYr-99-MTt">
             <objects>
-                <viewController id="4DT-KM-V5E" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailScreen" id="4DT-KM-V5E" customClass="DetailScreen" customModule="Melon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GMw-JU-RUf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbg-fJ-8AP">
-                                <rect key="frame" x="0.0" y="176" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4DT-KM-V5E" id="PEv-Wy-y2t"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fjj-vk-Rl2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="XbZ-BC-fdH" id="gE8-6i-ZPj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0G-So-eqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="XbZ-BC-fdH">
-                    <connections>
-                        <outlet property="delegate" destination="4DT-KM-V5E" id="RJt-0m-wO3"/>
-                        <outlet property="searchBar" destination="gbg-fJ-8AP" id="kKt-oQ-H1c"/>
-                        <outlet property="searchContentsController" destination="4DT-KM-V5E" id="IBo-ft-5zV"/>
-                        <outlet property="searchResultsDataSource" destination="4DT-KM-V5E" id="Mrx-yq-vJb"/>
-                        <outlet property="searchResultsDelegate" destination="4DT-KM-V5E" id="1cS-q9-f06"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2547.3282442748091" y="-365.49295774647891"/>
         </scene>
@@ -458,7 +436,7 @@
         <scene sceneID="SHO-AD-Pf7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3oY-je-D2e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="ic_lock_dark" id="aGN-Lw-Klh"/>
+                    <tabBarItem key="tabBarItem" title="" image="add" id="aGN-Lw-Klh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TIk-S3-D97">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -670,9 +648,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="38" height="38"/>
         <image name="cart " width="26" height="26"/>
         <image name="home" width="28" height="28"/>
-        <image name="ic_lock_dark" width="21.333333969116211" height="21.333333969116211"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

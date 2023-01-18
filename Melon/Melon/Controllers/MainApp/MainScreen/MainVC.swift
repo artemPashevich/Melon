@@ -11,7 +11,8 @@ import FirebaseStorage
 
 class MainVC: UIViewController {
 
-    private var user: User!
+//    private var user: User!
+    var indexPathRow: Int?
     private var ref_product: DatabaseReference!
     private var products = [Product]()
     @IBOutlet weak var productCollection: MainCollectionView!
@@ -19,8 +20,8 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let currentUser = Auth.auth().currentUser else { return }
-        user = User(user: currentUser)
+//        guard let currentUser = Auth.auth().currentUser else { return }
+//        user = User(user: currentUser)
 
         ref_product = Database.database().reference(withPath: "Products")
         
@@ -39,6 +40,21 @@ class MainVC: UIViewController {
             self?.productCollection.reloadData()
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//          guard segue.identifier == "ditail" else { return }
+//          guard let destination = segue.destination as? DetailScreen else { return }
+//          destination.indexPathRow = indexPathRow
+//        print(indexPathRow as Any)
+//      }
+    
+    func passData() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let secondViewController = storyboard.instantiateViewController(identifier: "DetailScreen") as? DetailScreen else { return }
+            secondViewController.indexPathRow = indexPathRow
+            
+            present(secondViewController, animated: true) 
+        }
     
 }
 
@@ -62,6 +78,11 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 361, height: 136)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        indexPathRow = indexPath.row
+        passData()
     }
     
 }
