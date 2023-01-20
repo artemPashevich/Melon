@@ -19,6 +19,11 @@ class CollectionPhotoCell: UICollectionViewCell {
         return image
     }()
     
+    var activityIndicate: UIActivityIndicatorView = {
+        let indicate = UIActivityIndicatorView()
+        return indicate
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imageView)
@@ -26,9 +31,10 @@ class CollectionPhotoCell: UICollectionViewCell {
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        addSubview(activityIndicate)
+        activityIndicate.center = center
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

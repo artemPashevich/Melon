@@ -10,6 +10,7 @@ import FirebaseStorage
 import Firebase
 
 class ProductCVCell: UICollectionViewCell {
+    
 
     @IBOutlet weak var nameProduct: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
@@ -32,6 +33,7 @@ class ProductCVCell: UICollectionViewCell {
     func dwnImage() {
         activityIndicator.startAnimating()
         Request.shared.downloadImageWithCache(urlString: product!.photoUuidArr.values.first as! String) { image in
+            self.imageProduct.layer.cornerRadius = 10
             self.imageProduct.image = image
             self.activityIndicator.stopAnimating()
         }

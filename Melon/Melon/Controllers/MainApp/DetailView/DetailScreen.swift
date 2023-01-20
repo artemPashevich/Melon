@@ -124,8 +124,10 @@ extension DetailScreen: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = galleryCollection.dequeueReusableCell(withReuseIdentifier: CollectionPhotoCell.reuseId, for: indexPath) as! CollectionPhotoCell
+        cell.activityIndicate.startAnimating()
         Request.shared.downloadImageWithCache(urlString: photos[indexPath.row] as! String) { image in
             cell.imageView.image = image
+            cell.activityIndicate.stopAnimating()
         }
         
         return cell

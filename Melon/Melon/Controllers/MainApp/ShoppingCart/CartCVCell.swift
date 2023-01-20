@@ -28,7 +28,7 @@ class CartCVCell: UICollectionViewCell {
     }
     
     func allParameters() {
-        priceProduct.text = productInCart?.price
+        priceProduct.text = "$\(productInCart!.price)"
         descriptionProduct.text = productInCart?.describtion
         nameProduct.text = productInCart?.name
     }
@@ -37,6 +37,7 @@ class CartCVCell: UICollectionViewCell {
         indicator.startAnimating()
         Request.shared.downloadImageWithCache(urlString: productInCart!.photoUuidArr.values.first as! String) { image in
             self.imageProduct.image = image
+            self.imageProduct.layer.cornerRadius = 10
             self.indicator.stopAnimating()
         }
     }
